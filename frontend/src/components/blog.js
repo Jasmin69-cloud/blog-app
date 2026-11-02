@@ -72,7 +72,7 @@ const toggleDropdown = () => {
   useEffect(() => {
     const addBlog = async () => {
       try {
-        const response = await axios.post(`${API}/api/blog`, {
+        const response = await axios.post(`'http://localhost:5001/api/blog`, {
           title: 'Sample Blog Title',
           content: 'This is a test blog being added using useEffect.',
           author: 'ajay',
