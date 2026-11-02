@@ -7,8 +7,8 @@ const app= express()
 const routes = require('./Routes')
 const bodyParser = require('body-parser');
 app.use(cors({
-  origin: "http://localhost:3000",
-  methods: ["GET", "POST"],
+  origin: ["http://localhost:3000","https://blog-app-4gcl.onrender.com"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   credentials: true
 }));
 app.use(express.json());

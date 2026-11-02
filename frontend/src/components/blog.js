@@ -49,7 +49,7 @@ const data = [
     publishDate: "2025-06-27"
   },
 ];
-
+const API = process.env.REACT_APP_API_URL;
 function BlogMain() {
   const [showDropdown, setShowDropdown] = useState(false);
   const [filteredData, setFilteredData] = useState(data);
@@ -72,7 +72,7 @@ const toggleDropdown = () => {
   useEffect(() => {
     const addBlog = async () => {
       try {
-        const response = await axios.post('http://localhost:5000/api/blog', {
+        const response = await axios.post(`${API}/api/blog`, {
           title: 'Sample Blog Title',
           content: 'This is a test blog being added using useEffect.',
           author: 'ajay',
@@ -107,7 +107,7 @@ const toggleDropdown = () => {
 
   const handleviewDetails = async (id) => {
   try {
-    const response = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+    const response = await axios.get(`${API}${id}`);
     setSelectedBlog(response.data);
     setShowDetailsModal(true);
   } catch (error) {

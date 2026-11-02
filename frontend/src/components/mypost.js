@@ -5,6 +5,7 @@ import laptopImg2 from '../images/profile.jpg';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import '../style/mypost.css'
+//const API = process.env.REACT_APP_API_URL;
 const MyProfile = () => {
   const [blogs, setBlogs] = useState([
     {
@@ -76,7 +77,7 @@ const handleAddBlog = async () => {
   formData.append('image', newBlog.profileImg);  
 
   try {
-    const response = await axios.post('http://localhost:5000/api/blog', formData, {
+    const response = await axios.post('http://localhost:5001/api/blog', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -91,7 +92,7 @@ const handleAddBlog = async () => {
  useEffect(() => {
     const getBlogs = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/blog')
+        const response = await axios.get('http://localhost:5001/api/blog')
         console.log(response.data.data);
         setBlogsData(response.data.data)
       } catch (error) {
@@ -103,7 +104,7 @@ const handleAddBlog = async () => {
     if (!window.confirm("Are you sure you want to delete this blog?")) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/blog/${blogId}`);
+      await axios.delete('http://localhost:5001/api/blog');
       setBlogsData((prev) => prev.filter((blog) => blog._id !== blogId));
     } catch (error) {
       console.error("Error deleting blog:", error.message);
@@ -133,7 +134,7 @@ const handleAddBlog = async () => {
           <div className="col-md-6 col-lg-4" key={index}>
             <div className="card shadow-sm h-100 border-0">
               <img
-                src={`http://localhost:5000${blog.image}`}
+                src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQkPwfBVK40OQpN3K1ukjhJI_EIis0bSHpvzxbyucgzw&s`}
                 className="card-img-top"
                 alt="Blog Cover"
                 style={{ height: '180px', objectFit: 'cover' }}
@@ -142,7 +143,7 @@ const handleAddBlog = async () => {
                 <h5 className="card-title">{blog.title}</h5>
                 <div className="d-flex align-items-center gap-2 mb-2">
                   <img
-                    src={`http://localhost:5000${blog.image}`}
+                    src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS73OboNq8YpolvhWur1kpvkaggtHmHEzhY7RPohICuOA&s=10`}
                     className="rounded-circle"
                     style={{ width: '32px', height: '32px', objectFit: 'cover' }}
                     alt="User"
